@@ -12,6 +12,69 @@
     -moz-appearance: textfield !important;
   }
 }
+@theme {
+/* Brand Colors (OKLCH recommended in v4) */
+--color-primary: oklch(0.62 0.20 264); /* Indigo-ish */
+--color-secondary: oklch(0.70 0.16 210); /* Blue-teal */
+--color-accent: oklch(0.71 0.15 140); /* Green-teal */
+
+
+/* Semantic */
+--color-success: oklch(0.70 0.15 150);
+--color-warning: oklch(0.82 0.17 80);
+--color-danger: oklch(0.62 0.23 27);
+
+
+/* Surfaces & text */
+--color-background: oklch(1 0 0); /* white */
+--color-foreground: oklch(0.20 0.03 265); /* near-black */
+--color-muted: oklch(0.95 0.01 265);
+--color-border: oklch(0.90 0.01 265);
+
+
+/* Radius */
+--radius-none: 0;
+--radius-sm: 0.25rem;
+--radius-md: 0.5rem;
+--radius-lg: 0.75rem;
+--radius-xl: 1.25rem;
+--radius-2xl: 1.5rem;
+
+
+/* Shadows (map to shadow-*) */
+--shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+--shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+--shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+--shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.05);
+
+
+/* Fonts (adds font-sans, font-mono utilities) */
+--font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+--font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+
+/* Breakpoints (adds sm:, md:, lg:, xl:, 2xl: variants) */
+--breakpoint-sm: 40rem; /* 640px */
+--breakpoint-md: 48rem; /* 768px */
+--breakpoint-lg: 64rem; /* 1024px */
+--breakpoint-xl: 80rem; /* 1280px */
+--breakpoint-2xl: 96rem;/* 1536px */
+}
+
+
+/* --- Dark scheme overrides: reassign the generated CSS variables --- */
+:root.dark, .dark {
+--color-background: oklch(0.18 0.02 265);
+--color-foreground: oklch(0.98 0.01 265);
+--color-muted: oklch(0.24 0.01 265);
+--color-border: oklch(0.30 0.01 265);
+
+
+/* Slightly brighter accents in dark for contrast */
+--color-primary: oklch(0.70 0.22 264);
+--color-secondary: oklch(0.76 0.18 210);
+--color-accent: oklch(0.78 0.17 140);
+}
 html {
   font-size: 14px;
 }
