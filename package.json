@@ -44,10 +44,16 @@
     "zod": "^4.1.12"
   },
   "devDependencies": {
+    "@commitlint/cli": "^20.1.0",
+    "@commitlint/config-conventional": "^20.0.0",
+    "@commitlint/types": "^20.0.0",
     "@prettier/plugin-oxc": "^0.0.4",
     "@primevue/auto-import-resolver": "^4.4.1",
+    "@types/crypto-js": "^4.2.2",
+    "@types/js-cookie": "^3.0.6",
     "@tsconfig/node22": "^22.0.2",
     "@types/jsdom": "^27.0.0",
+    "@types/lodash.isobject": "^3.0.9",
     "@types/lodash.random": "^3.2.9",
     "@types/node": "^22.18.11",
     "@vitejs/plugin-vue": "^6.0.1",
