@@ -1,5 +1,5 @@
 import type { RouteLocationNormalized } from 'vue-router'
-import { usePageLoaderStore } from '@/store'
+import { usePageLoaderStore } from '@/stores'
 import { nextTick } from 'vue'
 
 export function startPageLoading(to: RouteLocationNormalized) {

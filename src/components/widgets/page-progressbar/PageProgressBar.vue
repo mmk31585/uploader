@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onBeforeUnmount, ref } from 'vue'
 import random from 'lodash.random'
-import { usePageLoaderStore } from '@/store'
+import { usePageLoaderStore } from '@/stores'
 import { watchImmediate } from '@vueuse/core'
 
 /* ---------- Props ---------- */
