@@ -1,10 +1,10 @@
 import * as z from 'zod'
 
 export interface MaintenanceRequest {
-  mainttenance_secret: string
+  maintenance_secret: string
 }
 export interface MaintenanceResponse {
-  in_mainttenan_mode: boolean
+  in_maintenance_mode: boolean
 }
 
 export const AuthTokenSchema = z.object({
