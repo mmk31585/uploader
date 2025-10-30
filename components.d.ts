@@ -11,9 +11,17 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    BasePanel: typeof import('./src/components/base/panel/BasePanel.vue')['default']
+    Button: typeof import('primevue/button')['default']
+    IftaLabel: typeof import('primevue/iftalabel')['default']
+    InputText: typeof import('primevue/inputtext')['default']
     LayoutEmpty: typeof import('./src/components/layouts/LayoutEmpty.vue')['default']
     PageProgressBar: typeof import('./src/components/widgets/page-progressbar/PageProgressBar.vue')['default']
+    Panel: typeof import('primevue/panel')['default']
+    PanelRoot: typeof import('./src/components/base/panel/panelRoot.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    Search: typeof import('./src/components/widgets/search/Search.vue')['default']
+    SearchComponent: typeof import('./src/components/widgets/search/SearchComponent.vue')['default']
   }
 }
