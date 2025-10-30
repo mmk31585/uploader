@@ -1,40 +1,30 @@
-export type Color = 'default' | 'primary' | 'info' | 'success' | 'warning' | 'danger'
-export type Variant = 'solid' | 'soft' | 'outlined' | 'ghost'
-export type Size = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
-export type Radius = 'none' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | 'full'
+import type { HTMLAttributes } from 'vue'
+
+export type Radius = 'none' | 'sm' | 'md' | 'lg' | 'full'
 export type Shadow = false | 'sm' | 'md' | 'lg'
 
 export interface BeforeToggleContext {
-  toOpen: boolean
-  current: boolean
-  isUser: boolean
+  to: boolean
+}
+export interface ClassVariable {
+  root?: HTMLAttributes['class']
+  header?: HTMLAttributes['class']
+  title?: HTMLAttributes['class']
+  headerActions?: HTMLAttributes['class']
+  pcToggleButton?: HTMLAttributes['class']
+  contentContainer?: HTMLAttributes['class']
+  content?: HTMLAttributes['class']
+  footer?: HTMLAttributes['class']
 }
 
 export interface PanelRootProps {
-  modelValue?: boolean
   defaultOpen?: boolean
+  collapsed?: boolean
   collapsible?: boolean
   disabled?: boolean
-  beforeToggle?: (ctx: BeforeToggleContext) => boolean | Promise<boolean>
-
-  color?: Color
-  variant?: Variant
-  size?: Size
   radius?: Radius
   shadow?: Shadow
-  bordered?: boolean
-  padded?: boolean | number
   stickyHeader?: boolean
   stickyFooter?: boolean
-  loading?: boolean
-  as?: string
-  id?: string
-  class?: string
-  style?: string
-}
-export interface PanelContext {
-  open: boolean
-  toggle: (isUser?: boolean) => void
-  setOpen: (v: boolean, isUser?: boolean) => void
-  id: string
+  classNames?: ClassVariable
 }
