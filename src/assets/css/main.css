@@ -14,14 +14,6 @@
 }
 
 @theme {
-  /* ============================================================
-     🎨 PRIMARY BRAND COLOR
-     ------------------------------------------------------------
-     خانواده رنگ بنفشِ برند (Primary).
-     - Shadeها = تیرتر برای عمق و حالت‌های فعال/هاور.
-     - Tintها = روشن‌تر و سردتر برای لینک/هایلایت.
-     کاربرد: دکمه‌های اصلی، لینک‌های برجسته، آیکون‌های برند.
-  ============================================================ */
   --color-primary-shade-01: #f5e5ff; /* Lightest tone */
   --color-primary-shade-02: #edd2ff;
   --color-primary-shade-03: #deadff;
@@ -45,12 +37,6 @@
   --color-primary-tint-08: #0f58be;
   --color-primary-tint-09: #134d96;
 
-  /* ============================================================
-     ⚪ NEUTRAL GRAYS
-     ------------------------------------------------------------
-     خاکستری‌های خنثی برای پس‌زمینه، متن و مرزها.
-     01 = روشن‌ترین سطح (Light Surface) → 13 = تیره‌ترین (Dark Base).
-  ============================================================ */
   --color-neutral-gray-01: #fafafa; /* Pure white surface */
   --color-neutral-gray-02: #f7f7f8;
   --color-neutral-gray-03: #f2f2f3;
@@ -65,178 +51,86 @@
   --color-neutral-gray-12: #2e2f39;
   --color-neutral-gray-13: #23242e; /* Dark mode background base */
 
-  /* ============================================================
-     ❌ ERROR / DANGER
-     ------------------------------------------------------------
-     قرمز برای خطاها و هشدارهای بحرانی.
-     tints = ملایم‌تر برای پس‌زمینه پیام، shades = تیره‌تر برای متن/آیکون.
-  ============================================================ */
-  --color-error-tints-01: #ffe0e0;
-  --color-error-tints-02: #ffc2c2;
-  --color-error-tints-03: #ffa3a3;
-  --color-error-tints-04: #ff8585;
+  --color-error-tint-01: #ffe0e0;
+  --color-error-tint-02: #ffc2c2;
+  --color-error-tint-03: #ffa3a3;
+  --color-error-tint-04: #ff8585;
   --color-error-main: #ff6666; /* Error red */
   --color-error-shade-01: #cc5252;
   --color-error-shade-02: #993d3d;
   --color-error-shade-03: #662929;
   --color-error-shade-04: #331414;
 
-  /* ============================================================
-     ✅ SUCCESS
-     ------------------------------------------------------------
-     سبز برای موفقیت/تأیید عملیات. از tint برای پس‌زمینه نرم استفاده کن.
-  ============================================================ */
-  --color-success-tints-01: #f3fdf3;
-  --color-success-tints-02: #cbf5cb;
-  --color-success-tints-03: #9cec9c;
-  --color-success-tints-04: #6fe36f;
+  --color-success-tint-01: #f3fdf3;
+  --color-success-tint-02: #cbf5cb;
+  --color-success-tint-03: #9cec9c;
+  --color-success-tint-04: #6fe36f;
   --color-success-main: #32cd32; /* Lime green */
   --color-success-shade-01: #28a428;
   --color-success-shade-02: #1e7b1e;
   --color-success-shade-03: #145214;
   --color-success-shade-04: #0a290a;
 
-  /* ============================================================
-     ⚠️ WARNING
-     ------------------------------------------------------------
-     زرد طلایی برای اخطارها و هشدارهای غیر بحرانی.
-  ============================================================ */
-  --color-warning-tints-01: #fffcf5;
-  --color-warning-tints-02: #fff4d4;
-  --color-warning-tints-03: #ffe9a8;
-  --color-warning-tints-04: #ffdf7d;
+  --color-warning-tint-01: #fffcf5;
+  --color-warning-tint-02: #fff4d4;
+  --color-warning-tint-03: #ffe9a8;
+  --color-warning-tint-04: #ffdf7d;
   --color-warning-main: #ffc107;
   --color-warning-shade-01: #cc9a06;
   --color-warning-shade-02: #997404;
   --color-warning-shade-03: #664d03;
   --color-warning-shade-04: #332701;
 
-  /* ============================================================
-     ℹ️ INFO
-     ------------------------------------------------------------
-     آبی برای اطلاعات عمومی، نوتیف‌ها و لینک‌های اطلاعاتی.
-  ============================================================ */
-  --color-info-tints-01: #f4f9ff;
-  --color-info-tints-02: #d4eaff;
-  --color-info-tints-03: #a9d5ff;
-  --color-info-tints-04: #7dbfff;
+  --color-info-tint-01: #f4f9ff;
+  --color-info-tint-02: #d4eaff;
+  --color-info-tint-03: #a9d5ff;
+  --color-info-tint-04: #7dbfff;
   --color-info-main: #1e90ff; /* Dodger Blue */
   --color-info-shade-01: #1873cc;
   --color-info-shade-02: #125699;
   --color-info-shade-03: #0c3a66;
   --color-info-shade-04: #061d33;
 
-  /* ============================================================
-     🌈 BASE TOKENS (Quick Access)
-     ------------------------------------------------------------
-     میان‌بُرهای پرکاربرد برای رنگ‌های اصلی سیستم.
-  ============================================================ */
-  --color-primary: var(--color-primary-main);
-  --color-secondary: var(--color-primary-tint-05); /* Sky blue accent */
-  --color-accent: var(--color-success-shade-01); /* Green accent */
+  --color-primary: var(--tw-color-primary-main);
+  --color-secondary: var(--tw-color-primary-tint-05); /* Sky blue accent */
+  --color-accent: var(--tw-color-success-shade-01); /* Green accent */
 
-  /* ============================================================
-     🧭 SEMANTIC MAP
-     ------------------------------------------------------------
-     نگاشت معنایی برای استفاده در سرتاسر اپ (سازگار با تم).
-  ============================================================ */
-  --color-success: var(--color-success-main);
-  --color-warning: var(--color-warning-main);
-  --color-danger: var(--color-error-main);
+  --color-success: var(--tw-color-success-main);
+  --color-warning: var(--tw-color-warning-main);
+  --color-danger: var(--tw-color-error-main);
+  --color-info: var(--tw-color-info-main);
 
-  /* ============================================================
-     🧱 SURFACE & TEXT (Light)
-     ------------------------------------------------------------
-     پیش‌فرض‌های حالت روشن برای پس‌زمینه، متن و مرزها.
-  ============================================================ */
-  --color-background: var(--color-neutral-gray-04); /* App background */
-  --color-foreground: var(--color-neutral-gray-01); /* Card / elevated surface */
+  --color-base-background: var(--tw-color-neutral-gray-02); /* App background */
+  --color-background: var(--tw-color-neutral-gray-04); /* App background */
+  --color-foreground: var(--tw-color-neutral-gray-09); /* Card / elevated surface */
   --color-muted: oklch(0.95 0.01 265); /* Secondary / muted text */
-  --color-border: var(--color-neutral-gray-05); /* Default borders */
+  --color-border: var(--tw-color-neutral-gray-05); /* Default borders */
 
-  /* ============================================================
-     ✍️ TEXT ROLES (Light)
-     ------------------------------------------------------------
-     نقش‌های رنگی متن بر اساس اهمیت محتوا.
-  ============================================================ */
-  --text-primary: var(--color-neutral-gray-13); /* Main text */
-  --text-secondary: var(--color-neutral-gray-09); /* Less emphasis */
-  --text-disabled: var(--color-neutral-gray-07); /* Disabled / inactive */
+  --color-disable: var(--color-neutral-gray-09);
 
-  /* ============================================================
-     ⚙️ INTERACTIVE STATES (Light)
-     ------------------------------------------------------------
-     رنگ‌های حالت تعامل: hover / active / focus.
-  ============================================================ */
-  --state-hover: color-mix(in oklch, var(--color-primary) 10%, white);
-  --state-active: color-mix(in oklch, var(--color-primary) 20%, black);
-  --state-focus-ring: var(--color-primary-tint-04);
-
-  /* ============================================================
-     🪟 OVERLAY & BACKDROP
-     ------------------------------------------------------------
-     برای مودال‌ها، شیشه‌ای‌ها و پس‌زمینه‌های محو.
-  ============================================================ */
-  --overlay: rgba(0, 0, 0, 0.5); /* Modal backdrop color */
-  --backdrop-blur: 8px; /* Glass blur intensity */
-
-  /* ============================================================
-     // ADD: SURFACE LAYERS (Light) — عمق بصری کارت‌ها
-     ------------------------------------------------------------
-     اگر لازم نبود، این بلوک را حذف کن.
-  ============================================================ */
-  --surface-1: var(--color-neutral-gray-01);
-  --surface-2: var(--color-neutral-gray-02);
-  --surface-3: var(--color-neutral-gray-03);
+  --color-hover: color-mix(in oklch, var(--tw-color-primary) 10%, white);
+  --color-active: color-mix(in oklch, var(--tw-color-primary) 20%, black);
+  --color-focus-ring: var(--tw-color-primary-tint-04);
 }
 
-/* ============================================================
-   🌙 DARK THEME OVERRIDES
-   ------------------------------------------------------------
-   با فعال شدن کلاس `.app-dark` روی ریشه برنامه،
-   توکن‌های زیر برای حالت تاریک بازنویسی می‌شوند.
-============================================================ */
 :root.app-dark,
 .app-dark {
   /* پایه‌های دارک */
-  --color-background: var(--color-neutral-gray-13); /* Deep background */
-  --color-foreground: var(--color-neutral-gray-02); /* Light surfaces */
-  --color-muted: oklch(0.28 0.01 265); /* Muted text tone */
-  --color-border: var(--color-neutral-gray-10); /* Softer borders */
+  --tw-color-base-background: var(--tw-color-neutral-gray-10); /* Deep background */
+  --tw-color-background: var(--tw-color-neutral-gray-12); /* Deep background */
+  --tw-color-foreground: var(--tw-color-neutral-gray-02); /* Light surfaces */
+  --tw-color-muted: oklch(0.28 0.01 265); /* Muted text tone */
+  --tw-color-border: var(--tw-color-neutral-gray-10); /* Softer borders */
 
-  /* ============================================================
-     // ADD: SURFACE LAYERS (Dark) — عمق کارت‌ها در تاریکی
-     ------------------------------------------------------------
-     اگر خواستی ساده بماند، این ۳ خط را حذف کن.
-  ============================================================ */
-  --surface-1: var(--color-neutral-gray-13);
-  --surface-2: var(--color-neutral-gray-12);
-  --surface-3: var(--color-neutral-gray-11);
+  --tw-color-primary: color-mix(in oklch, var(--tw-color-primary-main) 70%, white);
 
-  /* ============================================================
-     // ADD: PRIMARY TUNING (Dark) — افزایش خوانایی اکشن‌ها
-     ------------------------------------------------------------
-     کمی روشنی به رنگ برند اضافه می‌کند تا روی پس‌زمینه تیره
-     خواناتر شود. در صورت عدم نیاز، این خط را حذف کن.
-  ============================================================ */
-  --color-primary: color-mix(in oklch, var(--color-primary-main) 70%, white);
+  --tw-color-disable: var(--tw-color-neutral-gray-06);
+  --tw-color-hover: color-mix(in oklch, var(--tw-color-primary-tint-05) 20%, transparent);
+  --tw-color-focus-ring: var(--tw-color-primary-tint-04);
 
-  /* متن‌ها در دارک */
-  --text-primary: var(--color-neutral-gray-02);
-  --text-secondary: var(--color-neutral-gray-07);
-  --text-disabled: var(--color-neutral-gray-09);
-
-  /* حالت‌های تعاملی در دارک */
-  --state-hover: color-mix(in oklch, var(--color-primary-tint-05) 20%, transparent);
-  --state-focus-ring: var(--color-primary-tint-04);
-
-  /* ============================================================
-     // ADD: GLASS STYLES (Dark) — شیشه‌ای‌های نرم برای نوارها/کارت‌ها
-     ------------------------------------------------------------
-     اوورلی و مرزهای شیشه‌ای کم‌کنتراست. اگر لازم نبود، حذف کن.
-  ============================================================ */
-  --overlay-glass: rgba(255, 255, 255, 0.04);
-  --border-glass: rgba(255, 255, 255, 0.08);
+  --tw-color-success: var(--tw-color-success-shade-04);
+  --tw-color-warning: var(--tw-color-warning-shade-02);
+  --tw-color-danger: var(--tw-color-error-shade-02);
 }
 
 html {
