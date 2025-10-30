@@ -2,6 +2,6 @@ export default [
   {
     path: '/',
     name: 'index',
-    component: () => import('@/pages/Index.vue'),
+    component: () => import('@/pages/PageIndex.vue'),
   },
 ]
