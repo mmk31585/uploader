@@ -101,7 +101,7 @@
   --color-info: var(--tw-color-info-main);
 
   --color-base-background: var(--tw-color-neutral-gray-02); /* App background */
-  --color-background: var(--tw-color-neutral-gray-04); /* App background */
+  --color-background: var(--tw-color-neutral-gray-03); /* App background */
   --color-foreground: var(--tw-color-neutral-gray-09); /* Card / elevated surface */
   --color-muted: oklch(0.95 0.01 265); /* Secondary / muted text */
   --color-border: var(--tw-color-neutral-gray-05); /* Default borders */
