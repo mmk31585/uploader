@@ -44,7 +44,7 @@ const UIHooks = {
 
   // ---------------- Auth ----------------
   getAuthToken: () => {
-    useAuthStore()
+    return ''
   },
   setAuthToken(token: string) {},
   clearAuthToken() {},
