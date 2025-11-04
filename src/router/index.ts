@@ -51,22 +51,20 @@ router.beforeEach(
       }
     }
 
-    if (null !== result && isObject(result)) {
-      next(result)
-    } else {
-      next() // make sure to always call next()!
-    }
+    if (result !== null && isObject(result)) return next(result)
+
+    return next()
   },
 )
 
 router.beforeResolve(
   (to: RouteLocationNormalized, from: RouteLocationNormalizedLoaded, next: NavigationGuardNext) => {
-    for (const check of middleware.beforeResolve) {
-      if (typeof check === 'function') {
-        //@ts-expect-error: Ignore parameters count
-        check(to, from)
-      }
-    }
+    // for (const check of middleware.beforeResolve) {
+    //   if (typeof check === 'function') {
+    //     //@ts-expect-error: Ignore parameters count
+    //     check(to, from)
+    //   }
+    // }
 
     next()
   },
