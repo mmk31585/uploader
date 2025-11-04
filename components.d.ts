@@ -11,9 +11,12 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    BasePanel: typeof import('./src/components/base/panel/BasePanel.vue')['default']
     LayoutEmpty: typeof import('./src/components/layouts/LayoutEmpty.vue')['default']
     PageProgressBar: typeof import('./src/components/widgets/page-progressbar/PageProgressBar.vue')['default']
+    Panel: typeof import('primevue/panel')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SearchComponent: typeof import('./src/components/widgets/search/SearchComponent.vue')['default']
   }
 }
