@@ -1,36 +1,25 @@
-// import{
-//   type MaintenanceRequest,
-//   type MaintenanceResponse,
-//   type AuthTokenProps,
-//   type LoginPlayload,
-//   type LoggedInUserProps,
-//   type CaptchaProps,
-//   AuthTokenSchema,
-//   CaptchaSchema,
-//   LoggedInUserSchrema
-// } from '@/services/api'
-
-import type { UseRequestConfig } from '@/plugins/client/types'
-import { useRequest } from '@/composables'
 import {
-  AuthTokenSchema,
-  CaptchaSchema,
-  LoggedInUserSchrema,
   type AuthTokenProps,
+  AuthTokenSchema,
   type CaptchaProps,
+  CaptchaSchema,
   type LoggedInUserProps,
-  type LoginPlayload,
+  LoggedInUserSchema,
+  type LoginPayload,
   type MaintenanceRequest,
   type MaintenanceResponse,
-} from './types'
+} from '@/services/api'
+import type { UseRequestConfig } from '@/plugins/client/types.ts'
+import { useRequest } from '@/composables'
 
 export const useAuthApi = () => {
   return {
-    capthca: (config: UseRequestConfig<CaptchaProps> = {}): Promise<CaptchaProps> => {
+    captcha: (config: UseRequestConfig<CaptchaProps> = {}): Promise<CaptchaProps> => {
       return useRequest<CaptchaProps>('/api/captcha', {}, { ...config, schema: CaptchaSchema })
     },
+
     login: (
-      payload: LoginPlayload,
+      payload: LoginPayload,
       config: UseRequestConfig<AuthTokenProps> = {},
     ): Promise<AuthTokenProps> => {
       return useRequest<AuthTokenProps>(
@@ -42,13 +31,7 @@ export const useAuthApi = () => {
         { ...config, schema: AuthTokenSchema },
       )
     },
-    me: (config: UseRequestConfig<LoggedInUserProps> = {}): Promise<LoggedInUserProps> => {
-      return useRequest<LoggedInUserProps>(
-        '/api/auth/me',
-        {},
-        { ...config, schema: LoggedInUserSchrema },
-      )
-    },
+
     logout: (config: UseRequestConfig<void> = {}): Promise<void> => {
       return useRequest<void>(
         '/api/auth/logout',
@@ -58,6 +41,19 @@ export const useAuthApi = () => {
         config,
       )
     },
+
+    refreshToken: (config: UseRequestConfig<AuthTokenProps> = {}): Promise<AuthTokenProps> => {
+      return useRequest<AuthTokenProps>('/api/auth/refresh', {}, { ...config, silent: true })
+    },
+
+    me: (config: UseRequestConfig<LoggedInUserProps> = {}): Promise<LoggedInUserProps> => {
+      return useRequest<LoggedInUserProps>(
+        '/api/auth/me',
+        {},
+        { ...config, schema: LoggedInUserSchema },
+      )
+    },
+
     maintenance: (
       payload: MaintenanceRequest,
       config: UseRequestConfig<MaintenanceResponse> = {},
