@@ -1,11 +1,11 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { axiosClient, createRequestWrapper } from '@/plugins'
-import type { RefreshToken } from '@/plugins/client/types'
+import type { RefreshToken, RequestHooks } from '@/plugins/client/types'
+import { useUserAuthStore } from '@/stores'
+import { useMaintenace } from '@/composables'
 import { type Router } from 'vue-router'
+import { useAuthApi } from '@/services/api'
 import type { ToastServiceMethods } from 'primevue/toastservice'
 import type { AxiosRequestConfig } from 'axios'
-import { useMaintenace } from '@/composables/index'
-import { useAuthApi } from '@/services/api'
 
 let router: Router | null = null
 let toast: ToastServiceMethods | null = null
@@ -17,10 +17,11 @@ export function registerRouter(r: Router) {
 export function registerToast(t: ToastServiceMethods) {
   toast = t
 }
+
 /**
  * This MUST implement by real ui route, toast, store and storage
  */
-const UIHooks = {
+const UIHooks: RequestHooks = {
   // ---------------- Toast ----------------
   toast: {
     success(msg: string) {
@@ -38,29 +39,46 @@ const UIHooks = {
   },
 
   // ---------------- Maintenance ----------------
-  getMaintenanceSecrets: () => {
+  getMaintenanceSecrets() {
     return useMaintenace().getSecret.value
   },
 
   // ---------------- Auth ----------------
-  getAuthToken: () => {
-    useAuthStore()
+  getAuthToken() {
+    return useUserAuthStore().token
   },
-  setAuthToken(token: string) {},
-  clearAuthToken() {},
-  resetAuthStore() {},
-  async redirectToLogin() {},
+  setAuthToken(token: string) {
+    useUserAuthStore().setToken(token)
+  },
+  clearAuthToken() {
+    useUserAuthStore().clearToken()
+  },
+  resetAuthStore() {
+    useUserAuthStore().clearUser()
+  },
+  async redirectToLogin() {
+    await router?.push({ name: 'login' })
+  },
 
   // ---------------- Refresh token ----------------
-  async refreshToken(): Promise<RefreshToken> {
-    return { access_token: 'temp' }
+  refreshToken(): Promise<RefreshToken> {
+    return useAuthApi().refreshToken()
   },
   refreshTokenUrlRejecter(config: AxiosRequestConfig): boolean {
-    return false
+    return !!config.url?.includes('/auth/refresh')
   },
 
   // ---------------- Extras ----------------
   extraHeaders(): Record<string, string> {
+    const user = useUserAuthStore()
+    const device = user.device
+
+    if (device) {
+      return {
+        'X-Device-Id': device,
+      }
+    }
+
     return {}
   },
 }
