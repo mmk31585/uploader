@@ -1,8 +1,9 @@
-import * as z from 'zod'
+import z from 'zod'
 
 export interface MaintenanceRequest {
   maintenance_secret: string
 }
+
 export interface MaintenanceResponse {
   in_maintenance_mode: boolean
 }
@@ -15,7 +16,7 @@ export const AuthTokenSchema = z.object({
 
 export type AuthTokenProps = z.infer<typeof AuthTokenSchema>
 
-export interface LoginPlayload {
+export interface LoginPayload {
   username: string
   password: string
   captcha: string
@@ -39,17 +40,17 @@ export const RolesSchema = z.object({
   permissions: z.array(RolePermissionsSchema).optional(),
 })
 
-export const LoggedInUserSchrema = z.object({
+export const LoggedInUserSchema = z.object({
   id: z.number().int(),
   first_name: z.string().optional(),
   last_name: z.string().optional(),
   full_name: z.string().optional(),
   username: z.string(),
   roles: z.array(RolesSchema).optional(),
-  permission: z.array(z.string()).optional(),
+  permissions: z.array(z.string()).optional(),
 })
 
-export type LoggedInUserProps = z.infer<typeof LoggedInUserSchrema>
+export type LoggedInUserProps = z.infer<typeof LoggedInUserSchema>
 
 export const CaptchaSchema = z.object({
   sensitive: z.boolean().optional(),
