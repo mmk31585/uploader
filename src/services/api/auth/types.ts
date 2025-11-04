@@ -1,0 +1,62 @@
+import z from 'zod'
+
+export interface MaintenanceRequest {
+  maintenance_secret: string
+}
+
+export interface MaintenanceResponse {
+  in_maintenance_mode: boolean
+}
+
+export const AuthTokenSchema = z.object({
+  access_token: z.string(),
+  expires_in: z.number().int(),
+  refresh_expires_in: z.number().int(),
+})
+
+export type AuthTokenProps = z.infer<typeof AuthTokenSchema>
+
+export interface LoginPayload {
+  username: string
+  password: string
+  captcha: string
+  key: string
+}
+
+export const LabelValueSchema = z.object({
+  label: z.string(),
+  value: z.string(),
+})
+
+export const RolePermissionsSchema = z.object({
+  items: z.array(LabelValueSchema),
+  label: z.string(),
+  value: z.string(),
+})
+
+export const RolesSchema = z.object({
+  id: z.number().int(),
+  name: z.string().optional(),
+  permissions: z.array(RolePermissionsSchema).optional(),
+})
+
+export const LoggedInUserSchema = z.object({
+  id: z.number().int(),
+  first_name: z.string().optional(),
+  last_name: z.string().optional(),
+  full_name: z.string().optional(),
+  username: z.string(),
+  roles: z.array(RolesSchema).optional(),
+  permissions: z.array(z.string()).optional(),
+})
+
+export type LoggedInUserProps = z.infer<typeof LoggedInUserSchema>
+
+export const CaptchaSchema = z.object({
+  sensitive: z.boolean().optional(),
+  key: z.string(),
+  img: z.string(),
+  expires_in: z.number(),
+})
+
+export type CaptchaProps = z.infer<typeof CaptchaSchema>
