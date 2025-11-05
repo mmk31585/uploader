@@ -1,8 +1,8 @@
 import type { Component, FunctionalComponent, HTMLAttributes } from 'vue'
 import type { MenuItem } from 'primevue/menuitem'
 
-export type direction = 'up' | 'down' | 'left' | 'right'
-export type position = 'top' | 'bottom' | 'left' | 'right'
+export type Direction = 'up' | 'down' | 'left' | 'right'
+export type Position = 'top' | 'bottom' | 'left' | 'right'
 export type Variant = 'outlined' | 'text' | 'link'
 export type Severity = '' | 'secondary' | 'info' | 'success' | 'warn' | 'danger' | 'contrast'
 export interface ClassVariable {
@@ -42,10 +42,10 @@ export interface GroupButtonProps {
 export interface SpeedDialProps {
   className?: ClassVariable
   items?: MenuItem[]
-  direction?: direction
+  direction?: Direction
   mask?: boolean
   tooltipShow?: boolean
-  tooltipPosition?: position
+  tooltipPosition?: Position
   tooltipEvent?: 'hover' | 'focus'
 }
 // export interface SplitButtonProps extends ButtonRootProps {}
