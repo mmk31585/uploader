@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { GroupButtonProps } from '@/components/base/button/types.ts'
-import BaseButton from '@/components/base/button/BaseButton.vue'
+import type { GroupButtonProps } from './types.ts'
+import BaseButton from './BaseButton.vue'
 
 const props = withDefaults(defineProps<GroupButtonProps>(), {
   items: undefined,

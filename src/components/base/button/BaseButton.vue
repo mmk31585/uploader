@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import Button from 'primevue/button'
-import type { ButtonProps } from '@/components/base/button/types.ts'
+import type { ButtonProps } from './types.ts'
 import { cn } from '@/utils'
 import { computed } from 'vue'
 const props = withDefaults(defineProps<ButtonProps>(), {
