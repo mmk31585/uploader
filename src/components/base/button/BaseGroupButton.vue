@@ -19,13 +19,5 @@ const props = withDefaults(defineProps<GroupButtonProps>(), {
         />
       </template>
     </template>
-
-    <template v-else>
-      <BaseButton />
-      <BaseButton />
-      <BaseButton />
-    </template>
   </ButtonGroup>
 </template>
-
-<style scoped></style>
