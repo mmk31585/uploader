@@ -2,7 +2,7 @@
 import Button from 'primevue/button'
 import type { ButtonProps } from '@/components/base/button/types.ts'
 import { cn } from '@/utils'
-import { computed, toRefs } from 'vue'
+import { computed } from 'vue'
 const props = withDefaults(defineProps<ButtonProps>(), {
   label: 'Button',
   disabled: false,
@@ -16,22 +16,9 @@ const props = withDefaults(defineProps<ButtonProps>(), {
   badge: undefined,
   className: undefined,
 })
-const {
-  label,
-  disabled,
-  severity,
-  loading,
-  icon,
-  shadow,
-  rounded,
-  text,
-  variant,
-  badge,
-  className,
-} = toRefs(props)
 const ptProp = computed(() => {
-  const root = className?.value?.root ?? undefined
-  const iconCls = className?.value?.icon ?? undefined
+  const root = props.className?.root ?? undefined
+  const iconCls = props.className?.icon ?? undefined
 
   return {
     root: cn(root),
