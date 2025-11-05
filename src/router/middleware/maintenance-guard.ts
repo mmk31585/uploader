@@ -1,5 +1,5 @@
 import type { RouteLocationNormalized } from 'vue-router'
-import { useMaintenanceStore } from '@/store'
+import { useMaintenanceStore } from '@/stores'
 
 export function checkMaintenanceGuard(to: RouteLocationNormalized) {
   const { isMaintenance } = useMaintenanceStore()

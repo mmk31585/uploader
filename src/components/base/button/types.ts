@@ -3,7 +3,7 @@ import type { MenuItem } from 'primevue/menuitem'
 
 export type Direction = 'up' | 'down' | 'left' | 'right'
 export type Position = 'top' | 'bottom' | 'left' | 'right'
-export type Variant = 'outlined' | 'text' | 'link'
+export type Variant = 'outlined' | 'text' | 'link' | undefined
 export type Severity = '' | 'secondary' | 'info' | 'success' | 'warn' | 'danger' | 'contrast'
 export interface ClassVariable {
   root?: HTMLAttributes['class']

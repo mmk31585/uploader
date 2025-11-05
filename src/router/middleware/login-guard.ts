@@ -1,5 +1,5 @@
 import type { RouteLocationNormalized } from 'vue-router'
-import { useUserAuthStore } from '@/store'
+import { useUserAuthStore } from '@/stores'
 
 export function checkLoginGuard(to: RouteLocationNormalized) {
   const store = useUserAuthStore()

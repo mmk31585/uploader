@@ -1,17 +1,23 @@
 <!-- DeedSearchPanel.vue -->
 <script setup lang="ts">
 import { BasePanel } from '@/components/base/panel'
+import 'primeicons/primeicons.css'
+import { BaseButton } from '@/components/base/button'
+
+import InputNumber from 'primevue/inputnumber'
 </script>
 
 <template>
   <BasePanel :collapsible="false" :stickyHeader="true">
     <template #header>
       <div class="tw:flex tw:items-center tw:justify-between tw:w-full tw:px-1">
-        <div
-          class="tw:w-6 tw:h-6 tw:rounded tw:border tw:border-border tw:flex tw:items-center tw:justify-center"
-        >
-          <div class="tw:w-3 tw:h-3 tw:bg-muted tw:rounded-xs"></div>
-        </div>
+        <BaseButton
+          :label="''"
+          icon="pi pi-arrow-right"
+          :shadow="false"
+          severity="secondary"
+          :rounded="true"
+        />
         <h2 class="tw:text-lg tw:font-bold tw:text-foreground">جستجو اسناد</h2>
       </div>
     </template>
@@ -26,14 +32,16 @@ import { BasePanel } from '@/components/base/panel'
 </IftaLabel>
 <InputText type="text" v-model="value" /> -->
         <div class="tw:grid tw:grid-cols-2 tw:gap-3">
-          <label class="tw:flex tw:flex-col tw:gap-1">
-            <span class="tw:text-xs tw:text-muted-foreground">کد نوسازی قدیم</span>
-            <div
-              class="tw:h-11 tw:px-3 tw:flex tw:items-center tw:rounded-xl tw:border tw:border-input tw:bg-background tw:shadow-sm"
-            >
-              ۰
-            </div>
-          </label>
+          <FloatLabel variant="on">
+            <InputNumber
+              inputId="کدنوسازی"
+              mode="currency"
+              currency="USD"
+              locale="en-US"
+              class="tw:w-full!"
+            />
+            <label for="on_label">On Label</label>
+          </FloatLabel>
 
           <label class="tw:flex tw:flex-col tw:gap-1">
             <span class="tw:text-xs tw:text-muted-foreground">کد نوسازی</span>

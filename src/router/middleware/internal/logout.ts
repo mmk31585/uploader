@@ -1,11 +1,11 @@
-import { useUserAuthStore } from '@/store'
+import { useUserAuthStore } from '@/stores'
 import { isValidInternalRedirectLink } from '@/utils'
 import type {
   NavigationGuardNext,
   RouteLocationNormalized,
   RouteLocationNormalizedLoaded,
 } from 'vue-router'
-import { endPageLoading } from '@/router/middleware'
+// import { endPageLoading } from '@/router/middleware'
 
 export const logoutMiddleware = async (
   to: RouteLocationNormalized,
@@ -20,7 +20,7 @@ export const logoutMiddleware = async (
   if (!store.user || !store.token) {
     // User is authenticated, continue navigation to the original destination
     next(from)
-    endPageLoading()
+    // endPageLoading()
     return
   }
 

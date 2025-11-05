@@ -4,7 +4,7 @@ import type { ButtonProps } from './types.ts'
 import { cn } from '@/utils'
 import { computed } from 'vue'
 const props = withDefaults(defineProps<ButtonProps>(), {
-  label: 'Button',
+  label: '',
   disabled: false,
   severity: '',
   loading: false,
@@ -12,7 +12,7 @@ const props = withDefaults(defineProps<ButtonProps>(), {
   shadow: true,
   rounded: false,
   text: false,
-  variant: 'outlined',
+  variant: undefined,
   badge: undefined,
   className: undefined,
 })
