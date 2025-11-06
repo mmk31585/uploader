@@ -5,5 +5,6 @@ export const radiusMap: Record<Radius, string> = {
   sm: 'tw:rounded-sm',
   md: 'tw:rounded-md',
   lg: 'tw:rounded-lg',
+  xl: 'tw:rounded-xl',
   full: 'tw:rounded-full',
 }
