@@ -1,101 +1,100 @@
 <!-- DeedSearchPanel.vue -->
 <script setup lang="ts">
 import { BasePanel } from '@/components/base/panel'
-import 'primeicons/primeicons.css'
+
 import { BaseButton } from '@/components/base/button'
+import { PanelRight } from 'lucide-vue-next'
 
 import InputNumber from 'primevue/inputnumber'
+import { ref } from 'vue'
+import Select from 'primevue/select'
+import InputText from 'primevue/inputtext'
+
+const form = ref({
+  code: 0,
+  search: '',
+})
+const unit = ref([
+  { name: 'واحد1', code: 'unit1' },
+  { name: 'واحد3', code: 'unit2' },
+  { name: 'واحد2', code: 'unit3' },
+  { name: 'واحد4', code: 'unit4' },
+  { name: 'واحد5', code: 'unit5' },
+  { name: 'واحد6', code: 'unit6' },
+])
 </script>
 
 <template>
-  <BasePanel :collapsible="false" :stickyHeader="true">
+  <BasePanel :stickyHeader="true">
     <template #header>
-      <div class="tw:flex tw:items-center tw:justify-between tw:w-full tw:px-1">
+      <div class="tw:flex tw:items-center tw:justify-between tw:w-full">
+        <h2 class="tw:text-lg tw:font-bold tw:text-foreground">جستجو اسناد</h2>
         <BaseButton
           :label="''"
-          icon="pi pi-arrow-right"
           :shadow="false"
-          severity="secondary"
           :rounded="true"
-        />
-        <h2 class="tw:text-lg tw:font-bold tw:text-foreground">جستجو اسناد</h2>
+          variant="text"
+          severity="secondary"
+          :class-name="{ root: 'tw:text-neutral-gray-08  tw:hover:text-neutral-gray-10' }"
+        >
+          <template #icon>
+            <PanelRight class="tw:size-5" />
+          </template>
+        </BaseButton>
       </div>
     </template>
 
-    <template #subheader>
-      <div class="tw:pt-3" dir="rtl">
-        <div class="tw:text-sm tw:font-semibold tw:text-primary tw:mb-3">ملک</div>
-
-        <!-- <IftaLabel>
-    <InputText id="username" v-model="value" variant="filled" />
-    <label for="username">Username</label>
-</IftaLabel>
-<InputText type="text" v-model="value" /> -->
-        <div class="tw:grid tw:grid-cols-2 tw:gap-3">
-          <FloatLabel variant="on">
-            <InputNumber
-              inputId="کدنوسازی"
-              mode="currency"
-              currency="USD"
-              locale="en-US"
-              class="tw:w-full!"
-            />
-            <label for="on_label">On Label</label>
-          </FloatLabel>
-
-          <label class="tw:flex tw:flex-col tw:gap-1">
-            <span class="tw:text-xs tw:text-muted-foreground">کد نوسازی</span>
-            <div
-              class="tw:h-11 tw:px-3 tw:flex tw:items-center tw:rounded-xl tw:border tw:border-input tw:bg-background tw:shadow-sm"
-            >
-              ۰۳-۰۱-۵۲۲۴-۱۰۰…
-            </div>
-          </label>
-
-          <button
-            type="button"
-            class="tw:h-11 tw:rounded-xl tw:border tw:border-input tw:bg-background tw:flex tw:items-center tw:justify-center tw:gap-2"
-          >
-            <svg
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              class="tw:opacity-70"
-              aria-hidden="true"
-            >
-              <path
-                d="M21 21l-4.35-4.35M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15z"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-                stroke-linecap="round"
+    <template #content>
+      <div class="tw:text-sm tw:font-bold tw:text-primary">ملک</div>
+      <div class="tw:px-3 tw:mt-4">
+        <div class="tw:grid tw:grid-cols-2 tw:gap-x-4 tw:gap-y-6">
+          <div>
+            <FloatLabel variant="on">
+              <InputNumber
+                inputId="noSazi"
+                class="tw:[&>input]:bg-transparent"
+                v-model="form.code"
+                size="large"
+                fluid
               />
-            </svg>
-            برگ جستجو
-          </button>
-
-          <div
-            class="tw:h-11 tw:px-3 tw:flex tw:items-center tw:justify-between tw:rounded-xl tw:border tw:border-input tw:bg-background"
-          >
-            <span class="tw:text-muted-foreground">واحد</span>
-            <div class="tw:flex tw:items-center tw:gap-2">
-              <span>واحد املاک</span>
-              <svg
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-                class="tw:opacity-70"
-              >
-                <path
-                  d="M6 9l6 6 6-6"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
+              <label for="noSazi" class="tw:bg-background">کدنوسازی</label>
+            </FloatLabel>
+          </div>
+          <div>
+            <FloatLabel variant="on">
+              <InputNumber
+                class="tw:[&>input]:bg-transparent"
+                inputId="noSazi"
+                v-model="form.code"
+                fluid
+                size="large"
+              />
+              <label for="noSazi" class="tw:bg-background">کدنوسازی قدیم</label>
+            </FloatLabel>
+          </div>
+          <div>
+            <Select
+              :options="unit"
+              option-label="name"
+              placeholder="واحد"
+              size="large"
+              class="tw:w-full tw:bg-transparent"
+            />
+          </div>
+          <div>
+            <FloatLabel variant="on">
+              <IconField>
+                <InputText
+                  inputId="noSazi"
+                  v-model="form.search"
+                  fluid
+                  size="large"
+                  class="tw:bg-transparent"
                 />
-              </svg>
-            </div>
+                <InputIcon class="pi pi-search" />
+              </IconField>
+              <label for="noSazi">برگ</label>
+            </FloatLabel>
           </div>
         </div>
       </div>
