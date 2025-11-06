@@ -5,13 +5,14 @@ import { radiusMap } from './classMap'
 import { cn } from '@/utils'
 
 const props = withDefaults(defineProps<PanelRootProps>(), {
-  radius: 'md',
+  radius: 'xl',
   collapsible: false,
   defaultOpen: true,
   disabled: false,
   collapsed: false,
-  stickyHeader: false,
+  stickyHeader: true,
   stickyFooter: false,
+  headerDivider: true,
 })
 
 const emit = defineEmits<{
@@ -37,9 +38,13 @@ function canChangePanel(): boolean {
 
 const radiusClass = radiusMap[props.radius]
 
-const rootClasses = cn('tw:w-full tw:relative tw:bg-background', radiusClass)
+const rootClasses = ['tw:w-full tw:relative tw:bg-background tw:text-foreground', radiusClass]
 
-const headerClass = computed(() => (props.stickyHeader ? 'tw:sticky tw:top-0  tw:z-20' : ''))
+const headerClass = computed(() =>
+  props.stickyHeader
+    ? 'tw:sticky tw:top-0 tw:z-20 tw:bg-background! tw:bg-backdrop-blur-md ' + radiusClass
+    : '',
+)
 const footerClass = computed(() => (props.stickyFooter ? 'tw:sticky tw:bottom-0 tw:z-10' : ''))
 </script>
 <template>
@@ -47,36 +52,37 @@ const footerClass = computed(() => (props.stickyFooter ? 'tw:sticky tw:bottom-0 
     v-model:collapsed="collapsedProxy"
     :toggleable="canChangePanel()"
     @toggle="(evt) => emit('toggle', evt.value)"
-    :class="rootClasses"
     :pt="{
-      root: cn(classNames?.root),
-      header: cn(headerClass, classNames?.header),
-      title: cn(classNames?.root),
-      headerActions: cn(classNames?.root),
-      pcToggleButton: cn(classNames?.root),
-      contentContainer: cn(classNames?.root),
-      content: cn(classNames?.root),
-      footer: cn(footerClass, classNames?.root),
+      root: cn(rootClasses, classNames?.root),
+      header: cn('tw:flex tw:flex-col tw:w-full tw:items-start', headerClass, classNames?.header),
+      title: cn(classNames?.title),
+      headerActions: cn(classNames?.headerActions),
+      pcToggleButton: cn(classNames?.toggleButton),
+      contentContainer: cn(
+        'tw:flex tw:flex-col tw:gap-4 tw:flex-1 tw:overflow-y-auto',
+        classNames?.contentContainer,
+      ),
+      content: cn(classNames?.content),
+      footer: cn(footerClass, classNames?.footer),
     }"
   >
     <template #header="{ collapsed: isCollapsed }">
       <slot name="header" :open="!isCollapsed" />
+      <Divider v-if="headerDivider" class="tw:mb-0" />
+      <div v-if="$slots.subheader" class="tw:mt-3 tw:w-full">
+        <slot name="subheader" />
+      </div>
     </template>
 
     <template #icons>
       <slot name="icons" />
     </template>
 
-    <template #default>
-      <div class="tw:flex tw:flex-col tw:gap-3">
-        <div v-if="$slots.subheader" class="tw:-mt-1">
-          <slot name="subheader" />
-          <div class="tw:border-t tw:border-border tw:mt-2"></div>
-        </div>
-      </div>
+    <template #default v-if="$slots.content">
+      <slot name="content" />
     </template>
 
-    <template #footer>
+    <template #footer v-if="$slots.footer">
       <slot name="footer" />
     </template>
   </Panel>
