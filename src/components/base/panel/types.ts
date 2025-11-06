@@ -1,6 +1,6 @@
 import type { HTMLAttributes } from 'vue'
 
-export type Radius = 'none' | 'sm' | 'md' | 'lg' | 'full'
+export type Radius = 'none' | 'sm' | 'md' | 'lg' | 'xl' | 'full'
 export type Shadow = false | 'sm' | 'md' | 'lg'
 
 export interface BeforeToggleContext {
@@ -11,7 +11,7 @@ export interface ClassVariable {
   header?: HTMLAttributes['class']
   title?: HTMLAttributes['class']
   headerActions?: HTMLAttributes['class']
-  pcToggleButton?: HTMLAttributes['class']
+  toggleButton?: HTMLAttributes['class']
   contentContainer?: HTMLAttributes['class']
   content?: HTMLAttributes['class']
   footer?: HTMLAttributes['class']
@@ -27,4 +27,5 @@ export interface PanelRootProps {
   stickyHeader?: boolean
   stickyFooter?: boolean
   classNames?: ClassVariable
+  headerDivider?: boolean
 }
