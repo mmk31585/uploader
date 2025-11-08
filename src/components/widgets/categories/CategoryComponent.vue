@@ -98,7 +98,6 @@ onMounted(() => expandAll())
 </script>
 
 <template>
-  <!-- wrapper ensures there is a height context -->
   <div class="tw:h-full tw:flex tw:flex-col tw:min-h-0">
     <BasePanel
       :class-names="{
@@ -173,3 +172,37 @@ onMounted(() => expandAll())
     </BasePanel>
   </div>
 </template>
+<style>
+/* اسکرول‌بار زیبا و مدرن */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--tw-color-primary-main);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    var(--tw-color-primary-main) 0%,
+    var(--tw-color-primary-shade-01) 100%
+  );
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    180deg,
+    var(--tw-color-primary-tint-04) 0%,
+    var(--tw-color-primary-shade-03) 100%
+  );
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+</style>
