@@ -15,7 +15,6 @@ const props = withDefaults(defineProps<ButtonProps>(), {
   text: false,
   variant: undefined,
   badge: undefined,
-  className: undefined,
 })
 </script>
 
@@ -31,10 +30,11 @@ const props = withDefaults(defineProps<ButtonProps>(), {
     :text="text"
     :variant="variant"
     :badge="badge"
+    :size="size"
     :pt="{
-      root: className.root,
-      icon: className.icon,
-      label: className.label,
+      root: className?.root,
+      icon: className?.icon,
+      label: className?.label,
     }"
   >
     <template #icon="{ class: iconClass }">
