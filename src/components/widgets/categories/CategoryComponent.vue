@@ -167,21 +167,23 @@ onMounted(() => expandAll())
           :value="nodes"
           selectionMode="checkbox"
           class="tw:w-full"
+          draggableNodes
+          droppableNodes
         />
       </template>
     </BasePanel>
   </div>
 </template>
 <style>
-/* اسکرول‌بار زیبا و مدرن */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 8px;
+  width: 3px;
+  height: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--tw-color-primary-main);
+  background: var(--tw-color-background);
   border-radius: 10px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.05);
 }
 
 ::-webkit-scrollbar-thumb {
@@ -191,15 +193,8 @@ onMounted(() => expandAll())
     var(--tw-color-primary-shade-01) 100%
   );
   border-radius: 10px;
-  transition: background 0.3s ease;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(
-    180deg,
-    var(--tw-color-primary-tint-04) 0%,
-    var(--tw-color-primary-shade-03) 100%
-  );
+  transition: all 0.35s ease;
+  opacity: 0.7;
 }
 
 ::-webkit-scrollbar-corner {
