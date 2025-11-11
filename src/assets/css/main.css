@@ -124,4 +124,5 @@
 html {
   font-size: 14px;
   direction: rtl;
+  scroll-behavior: smooth;
 }
