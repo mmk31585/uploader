@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import Button from 'primevue/button'
 import type { ButtonProps } from './types.ts'
-import { cn } from '@/utils'
-import { computed } from 'vue'
+// import { cn } from '@/utils'
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const props = withDefaults(defineProps<ButtonProps>(), {
   label: '',
   disabled: false,
@@ -15,15 +16,6 @@ const props = withDefaults(defineProps<ButtonProps>(), {
   variant: undefined,
   badge: undefined,
   className: undefined,
-})
-const ptProp = computed(() => {
-  const root = props.className?.root ?? undefined
-  const iconCls = props.className?.icon ?? undefined
-
-  return {
-    root: cn(root),
-    icon: cn(iconCls),
-  }
 })
 </script>
 
@@ -39,7 +31,11 @@ const ptProp = computed(() => {
     :text="text"
     :variant="variant"
     :badge="badge"
-    :pt="ptProp"
+    :pt="{
+      root: className.root,
+      icon: className.icon,
+      label: className.label,
+    }"
   >
     <template #icon="{ class: iconClass }">
       <slot name="icon" :class="iconClass">
