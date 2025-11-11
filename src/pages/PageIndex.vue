@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { Category } from '@/components/widgets/categories'
+import { Main } from '@/components/widgets/main'
 import { Search } from '@/components/widgets/search'
 </script>
 
@@ -20,6 +21,8 @@ import { Search } from '@/components/widgets/search'
       <Search class=""></Search>
       <Category class="tw:h-full"></Category>
     </section>
-    <section class="tw:col-span-9 tw:row-span-6 tw:bg-foreground tw:w-full tw:h-full"></section>
+    <section class="tw:col-span-9 tw:row-span-6 tw:flex tw:w-full tw:h-full">
+      <Main class="tw:flex-1" />
+    </section>
   </main>
 </template>
