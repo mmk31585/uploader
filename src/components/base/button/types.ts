@@ -8,6 +8,7 @@ export type Severity = '' | 'secondary' | 'info' | 'success' | 'warn' | 'danger'
 export interface ClassVariable {
   root?: HTMLAttributes['class']
   icon?: HTMLAttributes['class']
+  label?: HTMLAttributes['class']
 }
 
 export interface ButtonRootProps {
