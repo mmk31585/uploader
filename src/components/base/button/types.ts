@@ -23,6 +23,7 @@ export interface ButtonRootProps {
   disabled?: boolean
   shadow?: boolean
   className?: ClassVariable
+  size?: 'small' | 'large'
 }
 
 export interface ButtonProps extends ButtonRootProps {
