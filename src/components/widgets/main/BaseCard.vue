@@ -15,13 +15,21 @@ const props = withDefaults(defineProps<CardProps>(), {
 // const onCardClick = () => emit('card-click')
 </script>
 <template>
-  <Card>
+  <Card
+    :pt="{
+      root: 'tw:bg-neutral-gray-01',
+    }"
+  >
     <template #header>
       <div class="tw:p-3">
         <Image
           :src="imageUrl"
           :preview="imagePreview"
-          :pt="{ image: 'tw:rounded-xl tw:w-full tw:h-40 tw:object-cover' }"
+          :pt="{
+            root: 'tw:w-full',
+            image: 'tw:rounded-xl tw:w-full tw:aspect-auto tw:object-cover',
+            previewMask: 'tw:rounded-xl',
+          }"
         />
       </div>
       <div v-if="chips?.length" class="tw:px-3 tw:flex tw:gap-2 tw:justify-center">
@@ -31,7 +39,7 @@ const props = withDefaults(defineProps<CardProps>(), {
           :label="c.label"
           :icon="c.icon"
           :pt="{
-            root: 'tw:bg-gray-50 dark:tw:bg-slate-700 tw:text-gray-700 dark:tw:text-slate-200 tw:rounded-xl tw:border tw:border-gray-200 dark:tw:border-slate-600 tw:h-8',
+            root: 'tw:bg-background tw:text-gray-700 tw:rounded-xl tw:border tw:border-gray-200  tw:h-8',
             label: 'tw:text-sm',
           }"
         />
@@ -46,9 +54,7 @@ const props = withDefaults(defineProps<CardProps>(), {
           <span class="tw:mr-1">{{ typeValue }}</span>
         </div>
 
-        <div
-          class="tw:text-base tw:font-medium tw:text-gray-800 dark:tw:text-slate-200 tw:leading-6 tw:line-clamp-2"
-        >
+        <div class="tw:text-base tw:font-medium tw:text-gray-800 tw:leading-6 tw:line-clamp-2">
           <span class="tw:text-gray-700 dark:tw:text-slate-300">{{ categoryLabel }}:</span>
           <span class="tw:mr-1">{{ categoryValue }}</span>
         </div>

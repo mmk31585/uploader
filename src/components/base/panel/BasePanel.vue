@@ -38,7 +38,7 @@ function canChangePanel(): boolean {
 
 const radiusClass = radiusMap[props.radius]
 
-const rootClasses = ['tw:w-full tw:relative tw:bg-background tw:text-foreground', radiusClass]
+const rootClasses = ['tw:w-full tw:relative tw:bg-background tw:text-foreground ', radiusClass]
 
 const headerClass = computed(() =>
   props.stickyHeader

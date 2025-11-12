@@ -1,1 +1,1 @@
-export { default as Main } from './mainComponent.vue'
+export { default as Main } from './ArchiveViewer.vue'
