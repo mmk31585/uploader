@@ -15,7 +15,7 @@ import { Search } from '@/components/widgets/search'
     </main>
   </div> -->
   <main
-    class="tw:grid tw:grid-cols-12 tw:grid-rows-6 tw:gap-4 tw:p-4 tw:bg-base-background tw:w-screen tw:h-screen"
+    class="tw:grid tw:grid-cols-12 tw:grid-rows-6 tw:gap-4 tw:p-4 tw:bg-base-background tw:w-screen tw:h-screen tw:overflow-x-hidden"
   >
     <section class="tw:flex tw:flex-col tw:col-span-3 tw:row-span-6 tw:gap-4 tw:w-full tw:h-full">
       <Search class=""></Search>
