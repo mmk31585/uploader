@@ -11,8 +11,10 @@ import CardComponent from './BaseCard.vue'
 import { useGridZoomPan } from '@/composables/useGridZoomPan'
 import Slider from 'primevue/slider'
 import ContextMenu from 'primevue/contextmenu'
+import { BaseUploader } from '../uploader'
 type Item = { id: number }
 
+const visibleUploder = ref(false)
 const sort = ref([
   { name: 'تاریخ درج (جدیدترین)', code: 'date_desc' },
   { name: 'تاریخ درج (قدیمی‌ترین)', code: 'date_asc' },
@@ -49,11 +51,15 @@ const docs = ref(
 const selectedSort = ref(sort.value[0]?.code)
 
 const baseMin = 200
+const maxScale = 4
+const minScale = 1
 const scrollerEl = ref<HTMLElement | null>(null)
 const gridEl = ref<HTMLElement | null>(null)
 
-const { scaleModel, minScale, maxScale, step } = useGridZoomPan(scrollerEl, gridEl, {
+const { scaleModel, minScaleProp, maxScaleProp, step } = useGridZoomPan(scrollerEl, gridEl, {
   baseMin,
+  maxScale,
+  minScale,
 })
 const panelRef = ref<HTMLElement | null>(null)
 const cm = ref()
@@ -223,8 +229,8 @@ function onPanelRightClick(e: MouseEvent) {
               <Slider
                 v-model="scaleModel"
                 orientation="vertical"
-                :min="minScale"
-                :max="maxScale"
+                :min="minScaleProp"
+                :max="maxScaleProp"
                 :step="step"
                 :pt="{
                   root: 'tw:m-3 tw:relative tw:block tw:h-46 tw:w-1.5 tw:bg-primary-tint-01',
@@ -244,6 +250,7 @@ function onPanelRightClick(e: MouseEvent) {
               variant="outlined"
               severity="secondary"
               :shadow="false"
+              @click="visibleUploder = true"
             />
             <BaseButton
               size="large"
@@ -291,6 +298,7 @@ function onPanelRightClick(e: MouseEvent) {
               </a>
             </template>
           </ContextMenu>
+          <BaseUploader v-model:visible="visibleUploder" />
         </div>
       </template>
     </BasePanel>

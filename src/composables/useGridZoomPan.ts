@@ -16,8 +16,8 @@ export function useGridZoomPan(
   opts: Opts = {},
 ) {
   const baseMin = opts.baseMin ?? 250
-  const minScale = opts.minScale ?? 1
-  const maxScale = opts.maxScale ?? 4.5
+  const minScaleProp = opts.minScale ?? 1
+  const maxScaleProp = opts.maxScale ?? 4.5
   const wheelFactor = opts.wheelFactor ?? 0.0015
   const step = opts.step ?? 0.1
 
@@ -26,7 +26,7 @@ export function useGridZoomPan(
   const { elementX, elementY } = useMouseInElement(scroller)
 
   const applySize = () => grid.value?.style.setProperty('--col-min', `${baseMin * scale.value}px`)
-  const clamp = (v: number) => Math.min(maxScale, Math.max(minScale, v))
+  const clamp = (v: number) => Math.min(maxScaleProp, Math.max(minScaleProp, v))
 
   const getPivotXY = (pivot?: Pivot) => {
     const el = scroller.value
@@ -149,8 +149,8 @@ export function useGridZoomPan(
     setScale,
     reset,
     applyScale, // ★ بیرون در دسترسه
-    minScale,
-    maxScale,
+    minScaleProp,
+    maxScaleProp,
     step,
   }
 }
