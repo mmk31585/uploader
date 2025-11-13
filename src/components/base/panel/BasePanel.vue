@@ -66,7 +66,7 @@ const footerClass = computed(() => (props.stickyFooter ? 'tw:sticky tw:bottom-0 
       footer: cn(footerClass, classNames?.footer),
     }"
   >
-    <template #header="{ collapsed: isCollapsed }">
+    <template #header="{ collapsed: isCollapsed }" v-if="$slots.header || $slots.subheader">
       <slot name="header" :open="!isCollapsed" />
       <Divider v-if="headerDivider" class="tw:mb-0" />
       <div v-if="$slots.subheader" class="tw:mt-3 tw:w-full">
