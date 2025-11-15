@@ -26,9 +26,9 @@ const unit = ref([
 
 <template>
   <BasePanel :stickyHeader="true">
-    <template #header>
+    <template #header="{ titleClass }">
       <div class="tw:flex tw:items-center tw:justify-between tw:w-full">
-        <h2 class="tw:text-lg tw:font-bold tw:text-foreground">جستجو اسناد</h2>
+        <span :class="titleClass">جستجو اسناد</span>
         <BaseButton
           :label="''"
           :shadow="false"

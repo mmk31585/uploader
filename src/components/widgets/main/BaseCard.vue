@@ -23,6 +23,7 @@ const props = withDefaults(defineProps<CardProps>(), {
     <template #header>
       <div class="tw:p-3">
         <Image
+          :lazy="true"
           :src="imageUrl"
           :preview="imagePreview"
           :pt="{

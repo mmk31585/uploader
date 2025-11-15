@@ -45,17 +45,21 @@ const headerClass = computed(() =>
     ? 'tw:sticky tw:top-0 tw:z-20 tw:bg-background! tw:bg-backdrop-blur-md ' + radiusClass
     : '',
 )
+const titleClass = computed(() =>
+  cn('tw:text-md tw:lg:text-lg  tw:font-bold tw:text-foreground', props.classNames?.title),
+)
 const footerClass = computed(() => (props.stickyFooter ? 'tw:sticky tw:bottom-0 tw:z-10' : ''))
 </script>
 <template>
   <Panel
     v-model:collapsed="collapsedProxy"
     :toggleable="canChangePanel()"
+    :header="header"
     @toggle="(evt) => emit('toggle', evt.value)"
     :pt="{
       root: cn(rootClasses, classNames?.root),
       header: cn('tw:flex tw:flex-col tw:w-full tw:items-start', headerClass, classNames?.header),
-      title: cn(classNames?.title),
+      title: titleClass,
       headerActions: cn(classNames?.headerActions),
       pcToggleButton: cn(classNames?.toggleButton),
       contentContainer: cn(
@@ -67,7 +71,9 @@ const footerClass = computed(() => (props.stickyFooter ? 'tw:sticky tw:bottom-0 
     }"
   >
     <template #header="{ collapsed: isCollapsed }" v-if="$slots.header || $slots.subheader">
-      <slot name="header" :open="!isCollapsed" />
+      <slot name="header" :open="!isCollapsed" :titleClass>
+        <span :class="titleClass">{{ header }}</span>
+      </slot>
       <Divider v-if="headerDivider" class="tw:mb-0" />
       <div v-if="$slots.subheader" class="tw:mt-3 tw:w-full">
         <slot name="subheader" />

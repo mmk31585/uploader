@@ -100,15 +100,12 @@ onMounted(() => expandAll())
 <template>
   <div class="tw:h-full tw:flex tw:flex-col tw:min-h-0">
     <BasePanel
+      header="دسته بندی"
       :class-names="{
         root: 'tw:flex tw:flex-col tw:h-full',
         header: 'tw:shrink-0',
       }"
     >
-      <template #header>
-        <h2 class="tw:text-lg tw:font-bold tw:text-foreground tw:px-2">دسته بندی</h2>
-      </template>
-
       <template #subheader>
         <Toolbar :pt="{ root: 'tw:flex-nowrap tw:border-0' }">
           <template #start>
@@ -169,6 +166,11 @@ onMounted(() => expandAll())
           class="tw:w-full"
           draggableNodes
           droppableNodes
+          :pt="{
+            rootChildren: 'tw:[&>.p-tree-node]:border-0',
+            node: 'tw:border-r tw:border-border/60',
+            nodeChildren: 'tw:gap-0 tw:py-1 ',
+          }"
         />
       </template>
     </BasePanel>

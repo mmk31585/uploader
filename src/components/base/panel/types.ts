@@ -28,4 +28,5 @@ export interface PanelRootProps {
   stickyFooter?: boolean
   classNames?: ClassVariable
   headerDivider?: boolean
+  header?: string
 }

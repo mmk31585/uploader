@@ -11,6 +11,7 @@ import Divider from 'primevue/divider'
 import { BasePanel } from '@/components/base/panel'
 import { BaseButton } from '@/components/base/button'
 import { v4 as uuidv4 } from 'uuid'
+import Panel from 'primevue/panel'
 
 /* ====================== Types & Props ====================== */
 
@@ -355,7 +356,7 @@ defineExpose({
         <p class="tw:text-base tw:font-semibold tw:text-foreground">آپلود تصاویر</p>
       </div>
     </template>
-
+    <Panel></Panel>
     <Divider class="tw:my-0" />
 
     <BasePanel :pt="{ root: 'tw:border-0 tw:bg-transparent' }">
